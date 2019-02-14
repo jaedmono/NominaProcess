@@ -1,0 +1,40 @@
+debug: true
+#context.initializer.classes: com.smartservice.nomina.config.SpringProfileInitializer
+
+server:
+  port: 8090
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: org.hibernate.dialect.PostgreSQL94Dialect
+    url: jdbc:postgresql://localhost:5432/nominas
+    username: smart
+    password: 123456
+    driverClassName: org.postgresql.Driver
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    ROOT: INFO
+
+job:
+  archivo:
+    polling-frequency: 40000
+  nomina:
+    polling-frequency: 40000
+
+---
+spring:
+  profiles: local-env
+  datasource:
+    url: jdbc:postgresql://localhost:5432/nominas
+    username: postgres
+    password: postgres
